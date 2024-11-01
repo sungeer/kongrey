@@ -11,7 +11,7 @@ route = APIRouter(prefix='/user')
 
 @route.post('/get-access-token')
 @validate_request(access_token_schema)
-async def get_access_token(request):
+async def get_access_token(request: Request):
     body = await request.json()
     phone_number = body['phone_number']
     password = body['password']
