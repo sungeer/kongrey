@@ -9,8 +9,7 @@ class BaseModel:
 
     async def conn(self):
         if not self.cursor:
-            if not self._conn:
-                self._conn = await db.acquire()  # 获取连接
+            self._conn = await db.acquire()  # 获取连接
             self.cursor = await self._conn.cursor()  # 获取游标
 
     async def rollback(self):
@@ -18,10 +17,10 @@ class BaseModel:
 
     async def close(self):
         try:
+            if self.cursor:
+                await self.cursor.execute('UNLOCK TABLES;')
+                await self.cursor.close()  # 关闭游标
             if self._conn:
-                if self.cursor:
-                    await self.cursor.execute('UNLOCK TABLES;')
-                    await self.cursor.close()  # 关闭游标
                 await db.release(self._conn)  # 连接放回连接池
         finally:
             self.cursor = None
