@@ -6,7 +6,7 @@ from decimal import Decimal
 from http import HTTPStatus
 
 from starlette.responses import JSONResponse
-from starlette.exceptions import HTTPException
+from fastapi.exceptions import HTTPException
 
 
 class BaseResponse:

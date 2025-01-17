@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import HTTPException
-from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from kongrey.utils import http_client, redis_util
 from kongrey.utils.db_util import db
@@ -29,11 +28,6 @@ def register_errors(app):
 
     @app.exception_handler(HTTPException)
     async def http_exception_handler(request: Request, exc: HTTPException):
-        logger.opt(exception=True).warning(exc)
-        return jsonify_exc(exc.status_code, exc.detail)
-
-    @app.exception_handler(StarletteHTTPException)
-    async def starlette_exception_handler(request: Request, exc: StarletteHTTPException):
         logger.opt(exception=True).warning(exc)
         return jsonify_exc(exc.status_code, exc.detail)
 
