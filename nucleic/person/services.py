@@ -1,7 +1,7 @@
 from typing import Optional
 
 from sqlalchemy import select, func
-from sqlalchemy.orm import Session, with_parent
+from sqlalchemy.orm import Session
 
 from nucleic.person.models import PersonInDB
 from nucleic.person.schemas import Person

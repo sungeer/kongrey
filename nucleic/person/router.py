@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from nucleic.app.database import get_db
+from nucleic.conf.database import get_db
 from nucleic.auth.services import AUTH_SCHEMA
 from nucleic.utils.resp_util import PageResponse
 from nucleic.person.schemas import Person

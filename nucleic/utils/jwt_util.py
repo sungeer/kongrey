@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 import jwt  # python -m pip install pyjwt
 
-from nucleic.app import settings
+from nucleic.conf import settings
 
 # 创建令牌
 def create_token(data: dict):

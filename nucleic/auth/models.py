@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer
 
-from nucleic.app.database import Base
+from nucleic.conf.database import Base
 
 
 class UserInDB(Base):

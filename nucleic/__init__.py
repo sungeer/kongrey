@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Depends
-from fastapi.middleware.cors import CORSMiddleware  # 导入跨域资源共享安全中间件
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse  # 导入URL地址重定向响应类
+from fastapi.responses import RedirectResponse
 
-from nucleic.app.database import generate_tables
-from nucleic.app.settings import AUTH_SCHEMA
+from nucleic.conf.database import generate_tables
+from nucleic.conf.settings import AUTH_SCHEMA
 from nucleic.auth.services import init_admin_user
 from nucleic.auth.router import route as auth_router
 from nucleic.checkin.router import route as checkin_router

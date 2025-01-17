@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.orm import relationship
 
-from nucleic.app.database import Base
+from nucleic.conf.database import Base
 
 
 # 个人信息数据库模型

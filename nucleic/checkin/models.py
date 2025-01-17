@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 
-from nucleic.app.database import Base
+from nucleic.conf.database import Base
 
 
 # 登记数据库模型

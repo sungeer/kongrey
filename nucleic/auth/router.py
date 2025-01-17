@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from nucleic.app.database import get_db
-from nucleic.app.settings import AUTH_SCHEMA
+from nucleic.conf.database import get_db
+from nucleic.conf.settings import AUTH_SCHEMA
 from nucleic.utils import jwt_util
 from nucleic.auth import services
 from nucleic.auth.schemas import TokenOut, UserIn, UserCreateIn

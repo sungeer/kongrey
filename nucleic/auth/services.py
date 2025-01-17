@@ -3,8 +3,8 @@ from jwt.exceptions import InvalidTokenError
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from nucleic.app.settings import AUTH_SCHEMA, AUTH_INIT_USER, AUTH_INIT_PASSWORD
-from nucleic.app.database import get_db, SessionLocal
+from nucleic.conf.settings import AUTH_SCHEMA, AUTH_INIT_USER, AUTH_INIT_PASSWORD
+from nucleic.conf.database import get_db, SessionLocal
 from nucleic.utils import pwd_util, jwt_util
 from nucleic.auth.models import UserInDB
 from nucleic.auth.schemas import UserCreateIn

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from nucleic.app.database import get_db
+from nucleic.conf.database import get_db
 from nucleic.utils.resp_util import PageResponse
 from nucleic.checkin.schemas import CheckIn
 from nucleic.checkin.services import QueryParams, save_checkin, list_checkin
