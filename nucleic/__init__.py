@@ -14,7 +14,7 @@ app = FastAPI()
 
 origins = [
     "http://127.0.0.1:8000",  # 后端应用使用的端口
-    "http://127.0.0.1:8080",  # 前端应用使用的端口
+    # "http://127.0.0.1:8080",  # 前端应用使用的端口
 ]
 app.add_middleware(
     CORSMiddleware,  # type: ignore

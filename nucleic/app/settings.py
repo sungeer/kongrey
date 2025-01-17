@@ -9,7 +9,7 @@ JWT_ALGORITHM = 'HS256'
 # JWT中TOKEN有效期
 ACCESS_TOKEN_EXPIRE_MINUTES = 1440
 # 安全依赖项
-AUTH_SCHEMA = OAuth2PasswordBearer(tokenUrl="auth/login")
+AUTH_SCHEMA = OAuth2PasswordBearer(tokenUrl='auth/login')
 
 # 管理员初始用户名，在程序首次运行时创建
 AUTH_INIT_USER = 'admin'
