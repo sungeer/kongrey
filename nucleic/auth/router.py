@@ -4,14 +4,14 @@ from sqlalchemy.orm import Session
 
 from nucleic.app.database import get_db
 from nucleic.app.settings import AUTH_SCHEMA
-from nucleic.utils.token import create_token
+from nucleic.utils import jwt_util
 from nucleic.auth import services
-from nucleic.auth.schemas import Token, User, UserCreate
+from nucleic.auth.schemas import TokenOut, UserIn, UserCreateIn
 
 route = APIRouter(tags=['登录'])
 
 
-@route.post('/login', response_model=Token)
+@route.post('/login', response_model=TokenOut)
 async def login(
     form: OAuth2PasswordRequestForm = Depends(),  # 登录表单
     db: Session = Depends(get_db)
@@ -23,13 +23,13 @@ async def login(
             detail='用户名或密码无效',
             headers={'WWW-Authenticate': 'Bearer'},
         )
-    access_token = create_token(data={'username': user.username})  # 发放令牌
+    access_token = jwt_util.create_token(data={'username': user.username})  # 发放令牌
     return {'access_token': access_token, 'token_type': 'bearer'}  # 返回令牌
 
 
 # 创建用户
-@route.post('/createuser', response_model=User, dependencies=[Depends(AUTH_SCHEMA)])
-async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+@route.post('/createuser', response_model=UserIn, dependencies=[Depends(AUTH_SCHEMA)])
+async def create_user(user: UserCreateIn, db: Session = Depends(get_db)):
     db_user = services.get_user(db, user.username)
     if db_user:
         raise HTTPException(
@@ -39,6 +39,6 @@ async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     return services.create_user(db, user)  # 在数据库中创建用户
 
 
-@route.get('/userinfo', response_model=User)
-async def userinfo(user: User = Depends(services.get_current_user)):
+@route.get('/userinfo', response_model=UserIn)
+async def userinfo(user: UserIn = Depends(services.get_current_user)):
     return user

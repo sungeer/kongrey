@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from nucleic.app.database import get_db
 from nucleic.auth.services import AUTH_SCHEMA
-from nucleic.utils.response import PageResponse
+from nucleic.utils.resp_util import PageResponse
 from nucleic.person.schemas import Person
 from nucleic.person.services import save_person, list_person, get_person, get_params
 

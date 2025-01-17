@@ -3,12 +3,11 @@ from jwt.exceptions import InvalidTokenError
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from nucleic.app.database import get_db, SessionLocal
 from nucleic.app.settings import AUTH_SCHEMA, AUTH_INIT_USER, AUTH_INIT_PASSWORD
-from nucleic.utils.password import get_password_hash, verify_password
-from nucleic.utils.token import extract_token
+from nucleic.app.database import get_db, SessionLocal
+from nucleic.utils import pwd_util, jwt_util
 from nucleic.auth.models import UserInDB
-from nucleic.auth.schemas import UserCreate
+from nucleic.auth.schemas import UserCreateIn
 
 
 # 创建初始管理员账号
@@ -21,7 +20,7 @@ def init_admin_user():
         if cnt == 0:
             user = UserInDB(
                 username=AUTH_INIT_USER,
-                hashed_password=get_password_hash(AUTH_INIT_PASSWORD)
+                hashed_password=pwd_util.get_password_hash(AUTH_INIT_PASSWORD)
             )
             db.add(user)
             db.commit()
@@ -37,8 +36,8 @@ def get_user(db: Session, username: str):
 
 
 # 创建一个用户
-def create_user(db: Session, user: UserCreate):
-    hashed_password = get_password_hash(user.password)  # 计算密码的哈希值
+def create_user(db: Session, user: UserCreateIn):
+    hashed_password = pwd_util.get_password_hash(user.password)  # 计算密码的哈希值
     db_user = UserInDB(username=user.username, hashed_password=hashed_password)
     db.add(db_user)
     db.commit()
@@ -51,7 +50,7 @@ def authenticate_user(db: Session, username: str, password: str):
     user = get_user(db, username)
     if not user:
         return False
-    if not verify_password(password, user.hashed_password):
+    if not pwd_util.verify_password(password, user.hashed_password):
         return False
     return user
 
@@ -64,7 +63,7 @@ async def get_current_user(token: str = Depends(AUTH_SCHEMA), db: Session = Depe
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        username: str = extract_token(token)
+        username: str = jwt_util.extract_token(token)
         if username is None:
             raise invalid_exception
     except InvalidTokenError:
