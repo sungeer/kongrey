@@ -3,7 +3,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 
 # log_dir = Path(settings.BASE_DIR).joinpath(f'logs/{settings.app_name}')
 log_dir = Path(settings.BASE_DIR).joinpath('logs')

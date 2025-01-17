@@ -1,6 +1,6 @@
 import httpx
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 
 limits = httpx.Limits(
     max_keepalive_connections=settings.HTTPX_POOL_SIZE,

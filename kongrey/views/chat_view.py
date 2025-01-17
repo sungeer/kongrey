@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 from kongrey.utils.http_client import httpx_common
 from kongrey.utils.tools import jsonify
 from kongrey.utils import tools

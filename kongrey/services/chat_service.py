@@ -2,7 +2,7 @@ import json
 
 import httpx
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 from kongrey.utils import tools
 from kongrey.utils.http_client import httpx_stream
 from kongrey.utils.log_util import logger

@@ -4,7 +4,7 @@ import bcrypt  # python -m pip install bcrypt
 import jwt  # python -m pip install pyjwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 from kongrey.utils.log_util import logger
 
 

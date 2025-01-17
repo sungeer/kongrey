@@ -1,6 +1,6 @@
 import redis.asyncio as redis
 
-from kongrey.conf import settings
+from kongrey.settings import settings
 from kongrey.utils.cipher import cipher
 
 
