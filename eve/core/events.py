@@ -1,5 +1,5 @@
-from kongrey.utils import http_client, redis_util
-from kongrey.utils.db_util import db
+from eve.utils import http_client, redis_util
+from eve.utils.db_util import db
 
 
 def register_events(app):

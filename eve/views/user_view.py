@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Request
 
-from kongrey.models.user_model import UserModel
-from kongrey.utils.tools import jsonify, abort
-from kongrey.utils import jwt_util
-from kongrey.utils.schemas import access_token_schema
-from kongrey.utils.decorators import validate_request
+from eve.models.user_model import UserModel
+from eve.utils.tools import jsonify, abort
+from eve.utils import jwt_util
+from eve.utils.schemas import access_token_schema
+from eve.utils.decorators import validate_request
 
 route = APIRouter()
 

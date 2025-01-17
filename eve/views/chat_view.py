@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 
-from kongrey.settings import settings
-from kongrey.utils.http_client import httpx_common
-from kongrey.utils.tools import jsonify
-from kongrey.utils import tools
-from kongrey.utils.decorators import auth_required, validate_request
-from kongrey.models.chat_model import ChatModel
-from kongrey.models.message_model import MessageModel
-from kongrey.models.content_model import ContentModel
-from kongrey.utils.schemas import chat_id_schema, send_message_schema, get_messages_schema
-from kongrey.services import chat_service
+from eve.settings import settings
+from eve.utils.http_client import httpx_common
+from eve.utils.tools import jsonify
+from eve.utils import tools
+from eve.utils.decorators import auth_required, validate_request
+from eve.models.chat_model import ChatModel
+from eve.models.message_model import MessageModel
+from eve.models.content_model import ContentModel
+from eve.utils.schemas import chat_id_schema, send_message_schema, get_messages_schema
+from eve.services import chat_service
 
 route = APIRouter()
 

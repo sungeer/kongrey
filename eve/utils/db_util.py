@@ -1,7 +1,7 @@
 import aiomysql
 
-from kongrey.settings import settings
-from kongrey.utils.cipher import cipher
+from eve.settings import settings
+from eve.utils.cipher import cipher
 
 
 class BaseDB:

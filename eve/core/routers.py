@@ -1,4 +1,4 @@
-from kongrey.views import user_view, chat_view
+from eve.views import user_view, chat_view
 
 
 def register_routers(app):

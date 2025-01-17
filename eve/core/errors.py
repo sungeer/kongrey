@@ -1,9 +1,9 @@
 from fastapi import Request
 from fastapi.exceptions import HTTPException
 
-from kongrey.utils.log_util import logger
-from kongrey.utils.errors import ValidationError
-from kongrey.utils.tools import jsonify_exc
+from eve.utils.log_util import logger
+from eve.utils.errors import ValidationError
+from eve.utils.tools import jsonify_exc
 
 
 def register_errors(app):

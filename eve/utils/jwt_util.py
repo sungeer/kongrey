@@ -4,8 +4,8 @@ import bcrypt  # python -m pip install bcrypt
 import jwt  # python -m pip install pyjwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from kongrey.settings import settings
-from kongrey.utils.log_util import logger
+from eve.settings import settings
+from eve.utils.log_util import logger
 
 
 def set_password(password):

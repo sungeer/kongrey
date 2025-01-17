@@ -1,4 +1,4 @@
-from kongrey.utils.db_util import db
+from eve.utils.db_util import db
 
 
 class BaseModel:

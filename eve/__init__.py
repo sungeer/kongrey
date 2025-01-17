@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from kongrey.core.errors import register_errors
-from kongrey.core.events import register_events
-from kongrey.core.middlewares import register_middlewares
-from kongrey.core.routers import register_routers
+from eve.core.errors import register_errors
+from eve.core.events import register_events
+from eve.core.middlewares import register_middlewares
+from eve.core.routers import register_routers
 
 
 def create_app():

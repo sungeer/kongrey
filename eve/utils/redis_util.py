@@ -1,7 +1,7 @@
 import redis.asyncio as redis
 
-from kongrey.settings import settings
-from kongrey.utils.cipher import cipher
+from eve.settings import settings
+from eve.utils.cipher import cipher
 
 
 def redis_conn(host=settings.REDIS_HOST, port=6379, db=0, decode_responses=False):

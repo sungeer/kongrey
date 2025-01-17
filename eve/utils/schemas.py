@@ -1,6 +1,6 @@
 from cerberus import Validator
 
-from kongrey.utils.errors import ValidationError
+from eve.utils.errors import ValidationError
 
 
 class User:

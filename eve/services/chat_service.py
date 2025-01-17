@@ -2,12 +2,12 @@ import json
 
 import httpx
 
-from kongrey.settings import settings
-from kongrey.utils import tools
-from kongrey.utils.http_client import httpx_stream
-from kongrey.utils.log_util import logger
-from kongrey.models.message_model import MessageModel
-from kongrey.models.content_model import ContentModel
+from eve.settings import settings
+from eve.utils import tools
+from eve.utils.http_client import httpx_stream
+from eve.utils.log_util import logger
+from eve.models.message_model import MessageModel
+from eve.models.content_model import ContentModel
 
 
 async def get_response(conversation_id, content):

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from kongrey.models.base_model import BaseModel
+from eve.models.base_model import BaseModel
 
 
 class ChatModel(BaseModel):

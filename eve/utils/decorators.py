@@ -1,9 +1,9 @@
 from functools import wraps
 
-from kongrey.utils.tools import abort
-from kongrey.utils import jwt_util
-from kongrey.utils.schemas import User, validate_data
-from kongrey.models.user_model import UserModel
+from eve.utils.tools import abort
+from eve.utils import jwt_util
+from eve.utils.schemas import User, validate_data
+from eve.models.user_model import UserModel
 
 
 def auth_required(func):
