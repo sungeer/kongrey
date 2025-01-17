@@ -3,7 +3,7 @@ from base64 import b64encode, b64decode
 from Crypto.Cipher import AES  # pip install pycryptodome
 from Crypto.Util.Padding import pad, unpad
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 
 
 class AESCipher:
@@ -28,7 +28,7 @@ class AESCipher:
         return pt.decode('utf-8')
 
 
-key = settings.sec_key
+key = settings.SEC_KEY
 cipher = AESCipher(key)
 
 if __name__ == '__main__':

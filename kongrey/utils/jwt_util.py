@@ -4,7 +4,7 @@ import bcrypt  # python -m pip install bcrypt
 import jwt  # python -m pip install pyjwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 from kongrey.utils.log_util import logger
 
 
@@ -19,16 +19,16 @@ def validate_password(plain_password, hashed_password):
 
 def generate_token(data: dict):
     token_data = data.copy()  # data = {'id': 3}
-    expiration_delta = timedelta(minutes=settings.access_token_expire_minutes)
+    expiration_delta = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     expiration_time = datetime.now() + expiration_delta
     token_data.update({'exp': expiration_time.timestamp()})
-    encoded_token = jwt.encode(token_data, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
+    encoded_token = jwt.encode(token_data, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
     return encoded_token
 
 
 def extract_uid(token: str):
-    secret_key = settings.jwt_secret_key
-    jwt_algorithm = settings.jwt_algorithm
+    secret_key = settings.JWT_SECRET_KEY
+    jwt_algorithm = settings.JWT_ALGORITHM
     decoded_payload = jwt.decode(token, secret_key, algorithms=[jwt_algorithm])
     user_id = decoded_payload.get('id')
     return user_id

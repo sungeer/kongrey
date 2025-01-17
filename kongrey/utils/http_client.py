@@ -1,10 +1,10 @@
 import httpx
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 
 limits = httpx.Limits(
-    max_keepalive_connections=settings.httpx_pool_size,
-    max_connections=settings.httpx_max_overflow
+    max_keepalive_connections=settings.HTTPX_POOL_SIZE,
+    max_connections=settings.HTTPX_MAX_OVERFLOW
 )
 
 timeout = httpx.Timeout(
@@ -18,8 +18,8 @@ httpx_common = httpx.AsyncClient(limits=limits, timeout=timeout)
 
 # 流式
 limits = httpx.Limits(
-    max_keepalive_connections=settings.stream_pool_size,
-    max_connections=settings.stream_max_overflow
+    max_keepalive_connections=settings.STREAM_POOL_SIZE,
+    max_connections=settings.STREAM_MAX_OVERFLOW
 )
 
 timeout = httpx.Timeout(

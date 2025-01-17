@@ -2,7 +2,7 @@ import json
 
 import httpx
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 from kongrey.utils import tools
 from kongrey.utils.http_client import httpx_stream
 from kongrey.utils.log_util import logger
@@ -11,14 +11,14 @@ from kongrey.models.content_model import ContentModel
 
 
 async def get_response(conversation_id, content):
-    url = f'{settings.ai_url}/v1/oapi/agent/chat'
+    url = f'{settings.AI_URL}/v1/oapi/agent/chat'
     headers = {
         'Content-Type': 'application/json',
-        'Access-key': settings.ai_api_key,
-        'Workspace-Id': settings.ai_workspace_id
+        'Access-key': settings.AI_API_KEY,
+        'Workspace-Id': settings.AI_WORKSPACE_ID
     }
     data = {
-        'robot_id': settings.ai_robot_id,
+        'robot_id': settings.AI_ROBOT_ID,
         'conversation_id': conversation_id,
         'content': content,
         'response_mode': 'streaming'

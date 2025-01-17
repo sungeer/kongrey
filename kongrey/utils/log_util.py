@@ -3,10 +3,10 @@ from pathlib import Path
 
 from loguru import logger
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 
-# log_dir = Path(settings.basedir).joinpath(f'logs/{settings.app_name}')
-log_dir = Path(settings.basedir).joinpath('logs')
+# log_dir = Path(settings.BASE_DIR).joinpath(f'logs/{settings.app_name}')
+log_dir = Path(settings.BASE_DIR).joinpath('logs')
 log_dir.mkdir(parents=True, exist_ok=True)
 
 access_path = log_dir.joinpath('access.log')  # 'logs/access.log'

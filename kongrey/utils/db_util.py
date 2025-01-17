@@ -1,6 +1,6 @@
 import aiomysql
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 from kongrey.utils.cipher import cipher
 
 
@@ -11,13 +11,13 @@ class BaseDB:
     async def connect(cls):
         if cls._pool is None:
             cls._pool = await aiomysql.create_pool(
-                host=settings.db_host,
-                port=settings.db_port,
-                db=settings.db_name,
-                user=settings.db_user,
-                password=settings.db_pass,  # cipher.decrypt(settings.db_pass)
-                minsize=settings.db_pool_size,
-                maxsize=settings.db_max_overflow,
+                host=settings.DB_HOST,
+                port=settings.DB_PORT,
+                db=settings.DB_NAME,
+                user=settings.DB_USER,
+                password=settings.DB_PASS,  # cipher.decrypt(settings.DB_PASS)
+                minsize=settings.DB_POOL_SIZE,
+                maxsize=settings.DB_MAX_OVERFLOW,
                 pool_recycle=3600,
                 charset='utf8mb4',
                 cursorclass=aiomysql.DictCursor

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 
-from kongrey.configs import settings
+from kongrey.conf import settings
 from kongrey.utils.http_client import httpx_common
 from kongrey.utils.tools import jsonify
 from kongrey.utils import tools
@@ -12,7 +12,7 @@ from kongrey.models.content_model import ContentModel
 from kongrey.utils.schemas import chat_id_schema, send_message_schema, get_messages_schema
 from kongrey.services import chat_service
 
-route = APIRouter(prefix='/chat')
+route = APIRouter()
 
 
 @route.post('/chat-id')

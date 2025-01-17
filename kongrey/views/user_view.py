@@ -6,7 +6,7 @@ from kongrey.utils import jwt_util
 from kongrey.utils.schemas import access_token_schema
 from kongrey.utils.decorators import validate_request
 
-route = APIRouter(prefix='/user')
+route = APIRouter()
 
 
 @route.post('/get-access-token')
