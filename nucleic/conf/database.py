@@ -20,6 +20,6 @@ def get_db():
         db.close()
 
 
-# 根据Sqlalchemy的数据库模型定义，将数据库模型生成数据库中的表结构
+# 根据数据库模型生成数据库中的表结构
 def generate_tables():
     Base.metadata.create_all(bind=engine)
