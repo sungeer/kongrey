@@ -14,8 +14,9 @@ app = FastAPI()
 
 origins = [
     'http://127.0.0.1:8000',  # 后端应用使用的端口
-    # 'http://127.0.0.1:8080',  # 前端应用使用的端口
+    'http://127.0.0.1:8080',  # 前端应用使用的端口
 ]
+
 app.add_middleware(
     CORSMiddleware,  # type: ignore
     allow_origins=origins,  # 可用域列表
@@ -27,7 +28,7 @@ app.add_middleware(
 app.include_router(checkin_router, prefix='/checkin', dependencies=[Depends(AUTH_SCHEMA)])  # 注册登记模块
 app.include_router(person_router, prefix='/person')  # 注册预约模块
 app.include_router(auth_router, prefix='/auth')  # 注册安全模块
-# 注册静态资源文件，将前端后端项目整合运行
+# 注册静态资源文件，将前后端项目整合运行
 app.mount('/web', StaticFiles(directory='web/dist'), 'web')  # 管理端页面
 app.mount('/h5', StaticFiles(directory='h5/dist'), 'h5')  # 移动端页面
 
